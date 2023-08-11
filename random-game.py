@@ -3,8 +3,10 @@ import random
 import argparse
 import requests
 import webbrowser
-from os import getenv
 from time import sleep
+
+RAWG_TOKEN = "YOUR_TOKEN_HERE"
+STEAM_TOKEN = "YOUR_TOKEN_HERE"
 
 parser = argparse.ArgumentParser(description="Random game chooser")
 parser.add_argument("-steamuser", metavar="steamuser",
@@ -14,10 +16,6 @@ parser.add_argument("-amount", metavar="amount", default=10,
 parser.add_argument("-open", metavar="open", default="y",
                     type=str, help="Enter 'y' if you want to open links")
 args = parser.parse_args()
-
-RAWG_TOKEN = getenv("RAWG_TOKEN")
-STEAM_TOKEN = getenv("STEAM_TOKEN")
-
 
 def get_steam_id():
     steam_api_get_id = f"https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={STEAM_TOKEN}&vanityurl={steam_username}"
